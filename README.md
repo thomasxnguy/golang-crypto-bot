@@ -1,8 +1,6 @@
 # golang-crypto-trading-bot
 
 [![GoDoc](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot?status.svg)](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot)
-[![Travis CI](https://img.shields.io/travis/thomasxnguy/golang-crypto-trading-bot.svg)]((https://github.com/thomasxnguy/golang-crypto-trading-bot))
-[![GitHub release](https://img.shields.io/github/release/thomasxnguy/golang-crypto-trading-bot.svg)](https://github.com/thomasxnguy/golang-crypto-trading-bot/releases)
 [![license](https://img.shields.io/github/license/thomasxnguy/golang-crypto-trading-bot.svg?maxAge=2592000)](https://github.com/thomasxnguy/golang-crypto-trading-bot/LICENSE)
 
 
@@ -15,18 +13,18 @@ Bittrex, Poloniex, Binance, Bitfinex and Kraken, other in progress.
 
 Download a release or directly build the code from this repository.
 ``` bash
-$ go get github.com/thomasxnguy/golang-crypto-trading-bot
+$ go get github.com/thomasxnguy/golang-crypto-bot
 ```
 
 If you need to, you can create a strategy and bind it to the bot:
 ``` go
-import bot "github.com/thomasxnguy/golang-crypto-trading-bot/cmd"
+import bot "github.com/thomasxnguy/golang-crypto-bot/cmd"
 
 bot.AddCustomStrategy(myStrategy)
 bot.Execute()
 ```
 
-For strategy reference see the [Godoc documentation](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot).
+For strategy reference see the [Godoc documentation](https://godoc.org/github.com/thomasxnguy/golang-crypto-bot).
 
 # Configuration file template
 Create a configuration file from this example or run the `init` command of the compiled executable.
@@ -61,14 +59,3 @@ strategies:
         - exchange: bitfinex
           market_name: market_name_on_bitfinex
 ```
-
-# Donate
-Feel free to donate:
-
-| METHOD 	| ADDRESS                                   	|
-|--------	|--------------------------------------------	|
-| Paypal 	| https://paypal.me/AlessandroSanino         	|
-| BTC    	| 1DVgmv6jkUiGrnuEv1swdGRyhQsZjX9MT3         	|
-| XVG    	| DFstPiWFXjX8UCyUCxfeVpk6JkgaLBSNvS         	|
-| ETH    	| 0x2fe7bd8a41e91e9284aada0055dbb15ecececf02 	|
-| USDT   	| 18obCEVmbT6MHXDcPoFwnUuCmkttLbK5Xo         	|
