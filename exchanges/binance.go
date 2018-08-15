@@ -21,7 +21,7 @@ import (
 	"fmt"
 
 	"github.com/adshao/go-binance"
-	"github.com/saniales/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
 	"github.com/shopspring/decimal"
 )
 
@@ -122,6 +122,7 @@ func (wrapper BinanceWrapper) SellLimit(market *environment.Market, amount float
 
 // GetTicker gets the updated ticker for a market.
 func (wrapper BinanceWrapper) GetTicker(market *environment.Market) (*environment.Ticker, error) {
+	fmt.Println("yo")
 	binanceTicker, err := wrapper.api.NewBookTickerService().Symbol(MarketNameFor(market, wrapper)).Do(context.Background())
 	if err != nil {
 		return nil, err

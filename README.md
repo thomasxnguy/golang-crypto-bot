@@ -1,9 +1,9 @@
 # golang-crypto-trading-bot
 
-[![GoDoc](https://godoc.org/github.com/saniales/golang-crypto-trading-bot?status.svg)](https://godoc.org/github.com/saniales/golang-crypto-trading-bot)
-[![Travis CI](https://img.shields.io/travis/saniales/golang-crypto-trading-bot.svg)]((https://github.com/saniales/golang-crypto-trading-bot))
-[![GitHub release](https://img.shields.io/github/release/saniales/golang-crypto-trading-bot.svg)](https://github.com/saniales/golang-crypto-trading-bot/releases)
-[![license](https://img.shields.io/github/license/saniales/golang-crypto-trading-bot.svg?maxAge=2592000)](https://github.com/saniales/golang-crypto-trading-bot/LICENSE)
+[![GoDoc](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot?status.svg)](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot)
+[![Travis CI](https://img.shields.io/travis/thomasxnguy/golang-crypto-trading-bot.svg)]((https://github.com/thomasxnguy/golang-crypto-trading-bot))
+[![GitHub release](https://img.shields.io/github/release/thomasxnguy/golang-crypto-trading-bot.svg)](https://github.com/thomasxnguy/golang-crypto-trading-bot/releases)
+[![license](https://img.shields.io/github/license/thomasxnguy/golang-crypto-trading-bot.svg?maxAge=2592000)](https://github.com/thomasxnguy/golang-crypto-trading-bot/LICENSE)
 
 
 A golang implementation of a console-based trading bot for cryptocurrency exchanges. 
@@ -15,18 +15,18 @@ Bittrex, Poloniex, Binance, Bitfinex and Kraken, other in progress.
 
 Download a release or directly build the code from this repository.
 ``` bash
-$ go get github.com/saniales/golang-crypto-trading-bot
+$ go get github.com/thomasxnguy/golang-crypto-trading-bot
 ```
 
 If you need to, you can create a strategy and bind it to the bot:
 ``` go
-import bot "github.com/saniales/golang-crypto-trading-bot/cmd"
+import bot "github.com/thomasxnguy/golang-crypto-trading-bot/cmd"
 
 bot.AddCustomStrategy(myStrategy)
 bot.Execute()
 ```
 
-For strategy reference see the [Godoc documentation](https://godoc.org/github.com/saniales/golang-crypto-trading-bot).
+For strategy reference see the [Godoc documentation](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot).
 
 # Configuration file template
 Create a configuration file from this example or run the `init` command of the compiled executable.

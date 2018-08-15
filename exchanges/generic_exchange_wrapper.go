@@ -16,7 +16,7 @@
 package exchanges
 
 import (
-	"github.com/saniales/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
 )
 
 // TradeType represents a type of order, from trading fees point of view.

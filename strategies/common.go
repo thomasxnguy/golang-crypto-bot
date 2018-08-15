@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/saniales/golang-crypto-trading-bot/environment"
-	"github.com/saniales/golang-crypto-trading-bot/exchanges"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
 )
 
 var available map[string]Strategy //mapped name -> strategy
@@ -60,6 +60,7 @@ func (t *Tactic) Execute(wrappers []exchanges.ExchangeWrapper) {
 func init() {
 	available = make(map[string]Strategy)
 
+	AddCustomStrategy(Watch1Min)
 	AddCustomStrategy(Watch5Min)
 }
 

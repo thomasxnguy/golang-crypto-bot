@@ -20,10 +20,10 @@ import (
 	"io/ioutil"
 	"os"
 
-	helpers "github.com/saniales/golang-crypto-trading-bot/bot_helpers"
-	"github.com/saniales/golang-crypto-trading-bot/environment"
-	"github.com/saniales/golang-crypto-trading-bot/exchanges"
-	"github.com/saniales/golang-crypto-trading-bot/strategies"
+	helpers "github.com/thomasxnguy/golang-crypto-trading-bot/bot_helpers"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/strategies"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v2"
 )

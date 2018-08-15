@@ -1,5 +1,3 @@
-// Copyright © 2017 Alessandro Sanino <saninoale@gmail.com>
-//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -13,10 +11,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-package main
+package exchanges
 
-import "github.com/thomasxnguy/golang-crypto-trading-bot/cmd"
-
-func main() {
-	bot.Execute()
+// BitmexWrapper represents the wrapper for the Bitmex exchange.
+type BitmexWrapper struct {
+	//Add client here
 }
+
+// Name returns the name of the wrapped exchange.
+func (wrapper BitmexWrapper) Name() string {
+	return "Bitmex"
+}
+
+func (wrapper BitmexWrapper) String() string {
+	return wrapper.Name()
+}
+
+

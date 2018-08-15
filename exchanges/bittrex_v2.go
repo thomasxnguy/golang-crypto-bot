@@ -18,7 +18,7 @@ package exchanges
 import (
 	"errors"
 
-	"github.com/saniales/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
 	"github.com/thebotguys/golang-bittrex-api/bittrex"
 )
 

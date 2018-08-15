@@ -16,7 +16,7 @@
 package exchanges
 
 import (
-	"github.com/saniales/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
 	"github.com/shopspring/decimal"
 
 	bittrexAPI "github.com/toorop/go-bittrex"

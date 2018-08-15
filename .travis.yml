@@ -4,4 +4,4 @@ go:
   - "1.10"
 
 before_install: go get -t ./...
-go_import_path: github.com/saniales/golang-crypto-trading-bot
+go_import_path: github.com/thomasxnguy/golang-crypto-trading-bot
