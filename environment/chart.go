@@ -26,10 +26,12 @@ import (
 
 //CandleStick represents a single candlestick in a chart.
 type CandleStick struct {
-	High  decimal.Decimal //Represents the highest value obtained during candle period.
-	Open  decimal.Decimal //Represents the first value of the candle period.
-	Close decimal.Decimal //Represents the last value of the candle period.
-	Low   decimal.Decimal //Represents the lowest value obtained during candle period.
+	High    decimal.Decimal //Represents the highest value obtained during candle period.
+	Open    decimal.Decimal //Represents the first value of the candle period.
+	Close   decimal.Decimal //Represents the last value of the candle period.
+	Low     decimal.Decimal //Represents the lowest value obtained during candle period.
+	Volume  decimal.Decimal //Represents the volume of the trade
+	TradeNb int             //Represents the number of trade
 }
 
 func (cs CandleStick) String() string {

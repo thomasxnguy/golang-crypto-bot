@@ -32,7 +32,7 @@ var Watch1Min Strategy = IntervalStrategy{
 			return nil
 		},
 		OnUpdate: func(wrappers []exchanges.ExchangeWrapper, markets []*environment.Market) error {
-			_, err := wrappers[0].GetTicker(markets[0])
+			markets, err := wrappers[0].GetMarkets()
 			if err != nil {
 				return err
 			}

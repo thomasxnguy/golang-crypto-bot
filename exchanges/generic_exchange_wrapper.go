@@ -33,6 +33,7 @@ const (
 type ExchangeWrapper interface {
 	Name() string                                                                                                // Gets the name of the exchange.
 	GetTicker(market *environment.Market) (*environment.Ticker, error)                                           // Gets the updated ticker for a market.
+	GetMarkets() ([]*environment.Market, error)                        											 // Gets the current market data.
 	GetMarketSummary(market *environment.Market) (*environment.MarketSummary, error)                             // Gets the current market summary.
 	GetOrderBook(market *environment.Market) (*environment.OrderBook, error)                                     // Gets the order(ASK + BID) book of a market.
 	BuyLimit(market *environment.Market, amount float64, limit float64) (string, error)                          // Performs a limit buy action.

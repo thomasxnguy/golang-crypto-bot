@@ -3,6 +3,7 @@ package helpers
 import (
 	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
 	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
+	"fmt"
 )
 
 //InitExchange initialize a new ExchangeWrapper binded to the specified exchange provided.
@@ -19,6 +20,7 @@ func InitExchange(exchangeConfig environment.ExchangeConfig) exchanges.ExchangeW
 	case "bitfinex":
 		return exchanges.NewBitfinexWrapper(exchangeConfig.PublicKey, exchangeConfig.SecretKey)
 	default:
+		fmt.Println("Exchange does not exist %v", exchangeConfig.ExchangeName)
 		return nil
 	}
 }

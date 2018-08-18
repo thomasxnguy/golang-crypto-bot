@@ -39,6 +39,9 @@ exchange_configs:
   - exchange: bitfinex
     public_key: your_bitfinex_public_key
     secret_key: your_bitfinex_secret_key
+  - exchange: bitmex
+    public_key: your_bitmex_public_key
+    secret_key: your_bitmex_secret_key    
 strategies:
   - strategy: your_strategy_name
     markets:
@@ -50,6 +53,8 @@ strategies:
           market_name: market_name_on_binance
         - exchange: bitfinex
           market_name: market_name_on_bitfinex
+        - exchange: bitmex
+          market_name: market_name_on_bitmex
       - market: another_market_logical_name
         bindings:
         - exchange: bittrex
@@ -58,4 +63,6 @@ strategies:
           market_name: market_name_on_binance
         - exchange: bitfinex
           market_name: market_name_on_bitfinex
+        - exchange: bitmex
+          market_name: market_name_on_bitmex          
 ```

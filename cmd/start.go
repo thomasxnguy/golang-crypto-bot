@@ -70,6 +70,7 @@ func executeStartCommand(cmd *cobra.Command, args []string) {
 
 	fmt.Print("Getting exchange info ... ")
 	wrappers := make([]exchanges.ExchangeWrapper, len(botConfig.ExchangeConfigs))
+	fmt.Println("test")
 	for i, config := range botConfig.ExchangeConfigs {
 		wrappers[i] = helpers.InitExchange(config)
 	}

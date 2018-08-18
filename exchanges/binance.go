@@ -23,6 +23,7 @@ import (
 	"github.com/adshao/go-binance"
 	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
 	"github.com/shopspring/decimal"
+	
 )
 
 // BinanceWrapper represents the wrapper for the Binance exchange.
@@ -53,9 +54,7 @@ func (wrapper BinanceWrapper) GetMarkets() ([]*environment.Market, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	ret := make([]*environment.Market, len(binanceMarkets))
-
 	for i, market := range binanceMarkets {
 		if len(market.Symbol) == 6 {
 			quote := market.Symbol[0:2]
@@ -122,15 +121,14 @@ func (wrapper BinanceWrapper) SellLimit(market *environment.Market, amount float
 
 // GetTicker gets the updated ticker for a market.
 func (wrapper BinanceWrapper) GetTicker(market *environment.Market) (*environment.Ticker, error) {
-	fmt.Println("yo")
-	binanceTicker, err := wrapper.api.NewBookTickerService().Symbol(MarketNameFor(market, wrapper)).Do(context.Background())
+	binanceTicker, err := wrapper.api.NewBookTickerService().Symbol("BTCUSDT").Do(context.Background())
 	if err != nil {
 		return nil, err
 	}
 
 	ask, _ := decimal.NewFromString(binanceTicker.AskPrice)
 	bid, _ := decimal.NewFromString(binanceTicker.BidPrice)
-
+	fmt.Println(ask)
 	return &environment.Ticker{
 		Last: ask, // TODO: find a better way for last value, if any
 		Ask:  ask,
@@ -243,4 +241,21 @@ func (wrapper BinanceWrapper) UnsubscribeMarketSummaryFeed(market *environment.M
 	close(unsubscribed[tickerKey])
 	delete(unsubscribe, tickerKey)
 	delete(unsubscribed, tickerKey)
+}
+
+// GetKlines Gets candlestick bar information
+func (wrapper BinanceWrapper) GetKlines(time int64, symbol string) ([]CandleStick, error) {
+	trades, err := wrapper.api.NewAggTradesService().
+		Symbol(symbol).StartTime(time).EndTime(time+-60*60*1000).
+		Do(context.Background())
+
+	if err != nil {
+		fmt.Println(err)
+	}
+	for _, t := range trades {
+		fmt.Println(t)
+	}
+
+
+	return trades, nil
 }
