@@ -45,7 +45,7 @@ type ExchangeWrapper interface {
 	SubscribeMarketSummaryFeed(market *environment.Market, onUpdate func(environment.MarketSummary)) // Subscribes to the Market Summary Feed service.
 	UnsubscribeMarketSummaryFeed(market *environment.Market)                                         // Unsubscribes from the Market Summary Feed service.
 
-	GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) // Return Candlestick Chart
+	GetKlines(time int64, symbol string, interval string) (*environment.CandleStickChart, error) // Return Candlestick Chart
 }
 
 // MarketNameFor gets the market name as seen by the exchange.

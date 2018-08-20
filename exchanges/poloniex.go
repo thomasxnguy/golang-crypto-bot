@@ -215,7 +215,7 @@ func (wrapper PoloniexWrapper) UnsubscribeMarketSummaryFeed(market *environment.
 }
 
 // GetKlines Gets candlestick bar information
-func (wrapper PoloniexWrapper) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
+func (wrapper PoloniexWrapper) GetKlines(time int64, symbol string, interval string) (*environment.CandleStickChart, error) {
 	panic("Not Implemented")
 }
 

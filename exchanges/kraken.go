@@ -201,6 +201,6 @@ func (wrapper KrakenWrapper) UnsubscribeMarketSummaryFeed(market *environment.Ma
 }
 
 // GetKlines Gets candlestick bar information
-func (wrapper KrakenWrapper) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
+func (wrapper KrakenWrapper) GetKlines(time int64, symbol string, interval string) (*environment.CandleStickChart, error) {
 	panic("Not Implemented")
 }

@@ -220,6 +220,6 @@ func (wrapper BitfinexWrapper) UnsubscribeMarketSummaryFeed(market *environment.
 }
 
 // GetKlines Gets candlestick bar information
-func (wrapper BitfinexWrapper) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
+func (wrapper BitfinexWrapper) GetKlines(time int64, symbol string, interval string) (*environment.CandleStickChart, error) {
 	panic("Not Implemented")
 }

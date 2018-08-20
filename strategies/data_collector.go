@@ -32,7 +32,7 @@ const (
 	username    = "golang"
 	password    = "golang"
 	precision   = "s"
-	measurement = "binance_candle_15m"
+	measurement = "binance_candle_1d"
 )
 
 var DataCollector Strategy = IntervalStrategy{
@@ -57,10 +57,10 @@ var DataCollector Strategy = IntervalStrategy{
 
 			if err != nil || lastTs == 0 {
 				fmt.Println("first data")
-				lastTs = 1509579154
+				lastTs = 1483228800
 			}
 			fmt.Println(lastTs*1000)
-			results, err := wrappers[0].GetKlines(lastTs*1000, "BTCUSDT")
+			results, err := wrappers[0].GetKlines(lastTs*1000, "BTCUSDT", "1d")
 
 			bp, err := client.NewBatchPoints(client.BatchPointsConfig{
 				Database:  DB,
