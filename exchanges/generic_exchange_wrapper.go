@@ -16,7 +16,7 @@
 package exchanges
 
 import (
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 )
 
 // TradeType represents a type of order, from trading fees point of view.
@@ -33,7 +33,7 @@ const (
 type ExchangeWrapper interface {
 	Name() string                                                                                                // Gets the name of the exchange.
 	GetTicker(market *environment.Market) (*environment.Ticker, error)                                           // Gets the updated ticker for a market.
-	GetMarkets() ([]*environment.Market, error)                        											 // Gets the current market data.
+	GetMarkets() ([]*environment.Market, error)                                                                  // Gets the current market data.
 	GetMarketSummary(market *environment.Market) (*environment.MarketSummary, error)                             // Gets the current market summary.
 	GetOrderBook(market *environment.Market) (*environment.OrderBook, error)                                     // Gets the order(ASK + BID) book of a market.
 	BuyLimit(market *environment.Market, amount float64, limit float64) (string, error)                          // Performs a limit buy action.
@@ -44,6 +44,8 @@ type ExchangeWrapper interface {
 	FeedConnect()                                                                                    // Connects to the feed of the exchange.
 	SubscribeMarketSummaryFeed(market *environment.Market, onUpdate func(environment.MarketSummary)) // Subscribes to the Market Summary Feed service.
 	UnsubscribeMarketSummaryFeed(market *environment.Market)                                         // Unsubscribes from the Market Summary Feed service.
+
+	GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) // Return Candlestick Chart
 }
 
 // MarketNameFor gets the market name as seen by the exchange.

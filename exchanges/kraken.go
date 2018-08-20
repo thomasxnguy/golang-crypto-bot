@@ -20,7 +20,7 @@ import (
 
 	"github.com/beldur/kraken-go-api-client"
 	"github.com/fatih/structs"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 	"github.com/shopspring/decimal"
 )
 
@@ -197,5 +197,10 @@ func (wrapper KrakenWrapper) SubscribeMarketSummaryFeed(market *environment.Mark
 
 // UnsubscribeMarketSummaryFeed unsubscribes from the Market Summary Feed service.
 func (wrapper KrakenWrapper) UnsubscribeMarketSummaryFeed(market *environment.Market) {
+	panic("Not Implemented")
+}
+
+// GetKlines Gets candlestick bar information
+func (wrapper KrakenWrapper) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
 	panic("Not Implemented")
 }

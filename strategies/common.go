@@ -19,8 +19,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/exchanges"
 )
 
 var available map[string]Strategy //mapped name -> strategy
@@ -62,6 +62,7 @@ func init() {
 
 	AddCustomStrategy(Watch1Min)
 	AddCustomStrategy(Watch5Min)
+	AddCustomStrategy(DataCollector)
 }
 
 // AddCustomStrategy adds a strategy to the available set.

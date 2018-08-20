@@ -23,7 +23,7 @@ import (
 	"github.com/shopspring/decimal"
 
 	"github.com/pharrisee/poloniex-api"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 )
 
 // PoloniexWrapper provides a Generic wrapper of the Poloniex API.
@@ -213,3 +213,9 @@ func (wrapper PoloniexWrapper) UnsubscribeMarketSummaryFeed(market *environment.
 		wrapper.api.Unsubscribe("ticker")
 	}
 }
+
+// GetKlines Gets candlestick bar information
+func (wrapper PoloniexWrapper) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
+	panic("Not Implemented")
+}
+

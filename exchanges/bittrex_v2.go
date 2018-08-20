@@ -18,7 +18,7 @@ package exchanges
 import (
 	"errors"
 
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 	"github.com/thebotguys/golang-bittrex-api/bittrex"
 )
 
@@ -150,5 +150,10 @@ func (wrapper BittrexWrapperV2) SubscribeMarketSummaryFeed(market *environment.M
 //
 //     NOTE: Not supported on Bittrex v1 API, use BittrexWrapperV2.
 func (wrapper BittrexWrapperV2) UnsubscribeMarketSummaryFeed(market *environment.Market) {
+	panic("Not Implemented")
+}
+
+// GetKlines Gets candlestick bar information
+func (wrapper BittrexWrapperV2) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
 	panic("Not Implemented")
 }

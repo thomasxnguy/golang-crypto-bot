@@ -1,7 +1,7 @@
-# golang-crypto-trading-bot
+# golang-crypto-bot
 
-[![GoDoc](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot?status.svg)](https://godoc.org/github.com/thomasxnguy/golang-crypto-trading-bot)
-[![license](https://img.shields.io/github/license/thomasxnguy/golang-crypto-trading-bot.svg?maxAge=2592000)](https://github.com/thomasxnguy/golang-crypto-trading-bot/LICENSE)
+[![GoDoc](https://godoc.org/github.com/thomasxnguy/golang-crypto-bot?status.svg)](https://godoc.org/github.com/thomasxnguy/golang-crypto-bot)
+[![license](https://img.shields.io/github/license/thomasxnguy/golang-crypto-bot.svg?maxAge=2592000)](https://github.com/thomasxnguy/golang-crypto-bot/LICENSE)
 
 
 A golang implementation of a console-based trading bot for cryptocurrency exchanges. 

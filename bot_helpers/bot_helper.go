@@ -1,8 +1,8 @@
 package helpers
 
 import (
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/exchanges"
 	"fmt"
 )
 

@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  influxdb:
+    container_name: cryptobot_influxdb
+    image: influxdb
+    ports:
+      - 8086:8086
+      - 8083:8083
+    volumes:
+      - /tmp/docker/cryptobot_influxdb/data:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=crypto_bot
+      - INFLUXDB_HTTP_AUTH_ENABLED=true
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=password
+      - INFLUXDB_USER=golang
+      - INFLUXDB_USER_PASSWORD=golang

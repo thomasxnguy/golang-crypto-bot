@@ -20,8 +20,8 @@ import (
 	"time"
 
 	"github.com/nlopes/slack"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/exchanges"
 	"github.com/shomali11/slacker"
 	"github.com/sirupsen/logrus"
 )

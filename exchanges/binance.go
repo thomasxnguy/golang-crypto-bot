@@ -21,9 +21,8 @@ import (
 	"fmt"
 
 	"github.com/adshao/go-binance"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 	"github.com/shopspring/decimal"
-	
 )
 
 // BinanceWrapper represents the wrapper for the Binance exchange.
@@ -244,18 +243,30 @@ func (wrapper BinanceWrapper) UnsubscribeMarketSummaryFeed(market *environment.M
 }
 
 // GetKlines Gets candlestick bar information
-func (wrapper BinanceWrapper) GetKlines(time int64, symbol string) ([]CandleStick, error) {
-	trades, err := wrapper.api.NewAggTradesService().
-		Symbol(symbol).StartTime(time).EndTime(time+-60*60*1000).
+func (wrapper BinanceWrapper) GetKlines(start int64, symbol string) (*environment.CandleStickChart, error) {
+	fmt.Println(start)
+	trades, err := wrapper.api.NewKlinesService().
+		Symbol(symbol).Interval("15m").Limit(100).StartTime(start).
 		Do(context.Background())
 
 	if err != nil {
 		fmt.Println(err)
+		return nil,err
 	}
+	chart := &environment.CandleStickChart{}
+	chart.CandlePeriod = 60 * 60 * 1000
+	chart.CandleSticks = make([]environment.CandleStick, len(trades))
 	for _, t := range trades {
-		fmt.Println(t)
+		c := environment.CandleStick{}
+		c.Close, _ = decimal.NewFromString(t.Close)
+		c.High, _ = decimal.NewFromString(t.High)
+		c.Low, _ = decimal.NewFromString(t.Low)
+		c.Open, _ = decimal.NewFromString(t.Open)
+		c.Volume, _ = decimal.NewFromString(t.Volume)
+		c.TradeNb = t.TradeNum
+		c.OpenTime = t.OpenTime
+		chart.CandleSticks = append(chart.CandleSticks, c)
 	}
 
-
-	return trades, nil
+	return chart, nil
 }

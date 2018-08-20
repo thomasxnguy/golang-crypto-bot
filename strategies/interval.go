@@ -18,8 +18,8 @@ package strategies
 import (
 	"time"
 
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/exchanges"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/exchanges"
 )
 
 // IntervalStrategy is an interval based strategy.

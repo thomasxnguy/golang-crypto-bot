@@ -23,7 +23,9 @@ _testmain.go
 *.test
 *.prof
 
-golang-crypto-trading-bot
+golang-crypto-bot
 
 .bot_config.yaml
 .bot_config.yml
+
+.idea

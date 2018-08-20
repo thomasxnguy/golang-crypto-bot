@@ -6,7 +6,7 @@ import (
 	"github.com/shopspring/decimal"
 
 	bitfinex "github.com/bitfinexcom/bitfinex-api-go/v1"
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 )
 
 // BitfinexWrapper provides a Generic wrapper of the Bitfinex API.
@@ -217,4 +217,9 @@ func (wrapper BitfinexWrapper) UnsubscribeMarketSummaryFeed(market *environment.
 	if _, subscribedToFeed := wrapper.unsubscribeChannels[MarketNameFor(market, wrapper)]; subscribedToFeed {
 		wrapper.unsubscribeChannels[MarketNameFor(market, wrapper)] <- true
 	}
+}
+
+// GetKlines Gets candlestick bar information
+func (wrapper BitfinexWrapper) GetKlines(time int64, symbol string) (*environment.CandleStickChart, error) {
+	panic("Not Implemented")
 }

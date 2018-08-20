@@ -21,7 +21,7 @@ import (
 
 	yaml "gopkg.in/yaml.v2"
 
-	"github.com/thomasxnguy/golang-crypto-trading-bot/environment"
+	"github.com/thomasxnguy/golang-crypto-bot/environment"
 	"github.com/spf13/cobra"
 )
 
