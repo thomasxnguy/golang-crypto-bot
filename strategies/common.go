@@ -63,6 +63,7 @@ func init() {
 	AddCustomStrategy(Watch1Min)
 	AddCustomStrategy(Watch5Min)
 	AddCustomStrategy(DataCollector)
+	AddCustomStrategy(ShowTa)
 }
 
 // AddCustomStrategy adds a strategy to the available set.

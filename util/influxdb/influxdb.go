@@ -7,12 +7,14 @@ import (
 	"encoding/json"
 )
 
+// WritePoints write an entry in influxDB.
 func WritePoints(clnt client.Client, bp client.BatchPoints) {
 	if err := clnt.Write(bp); err != nil {
 		log.Fatal(err)
 	}
 }
 
+// GetLastTimestamp get the last timestamp from a specific measurement.
 func GetLastTimestamp(clnt client.Client, db string, precision string, measurement string, value string) (int64, error) {
 	ts, err := queryDB(clnt, db, precision,
 		fmt.Sprintf("Select last(%s),time from %s", value, measurement))
@@ -23,6 +25,7 @@ func GetLastTimestamp(clnt client.Client, db string, precision string, measureme
 	return ts[0].Series[0].Values[0][0].(json.Number).Int64()
 }
 
+// queryDB call InfluxDB with specific cmd.
 func queryDB(clnt client.Client, db string, precision string, cmd string) (res []client.Result, err error) {
 	q := client.Query{
 		Command:   cmd,

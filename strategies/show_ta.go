@@ -1,4 +1,5 @@
 // Copyright © 2017 Thomas Nguy
+//
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
@@ -20,31 +21,52 @@ import (
 
 	"github.com/thomasxnguy/golang-crypto-bot/environment"
 	"github.com/thomasxnguy/golang-crypto-bot/exchanges"
+	techan "github.com/sdcoffey/techan"
+	"github.com/sdcoffey/big"
 )
 
-// Watch1Min prints out the info of the market every 5 minutes.
-var Watch1Min Strategy = IntervalStrategy{
+var ShowTa Strategy = IntervalStrategy{
 	Model: StrategyModel{
-		Name: "Watch1Min",
+		Name: "ShowTa",
 		Setup: func(wrappers []exchanges.ExchangeWrapper, markets []*environment.Market) error {
-			fmt.Println("Watch1Min starting")
+			fmt.Println("ShowTa starting")
 			return nil
 		},
 		OnUpdate: func(wrappers []exchanges.ExchangeWrapper, markets []*environment.Market) error {
-			markets, err := wrappers[0].GetMarkets()
+
+			results, err := wrappers[0].GetKlines(time.Now().UnixNano()/1000000-600000, "BTCUSDT", "1m")
 			if err != nil {
 				return err
 			}
-			fmt.Println(markets)
+
+			series := techan.NewTimeSeries()
+			for _, c := range results.CandleSticks {
+				period := techan.NewTimePeriod(time.Unix(c.OpenTime, 0), time.Hour*24)
+				fmt.Printf("period %v",period)
+				candle := techan.NewCandle(period)
+				candle.OpenPrice = big.NewFromString(c.Open.String())
+				candle.ClosePrice = big.NewFromString(c.Close.String())
+				candle.MaxPrice = big.NewFromString(c.High.String())
+				candle.MinPrice = big.NewFromString(c.Low.String())
+				series.AddCandle(candle)
+				fmt.Printf("candle %v",candle)
+			}
+
+			closePrices := techan.NewClosePriceIndicator(series)
+			movingAverage := techan.NewEMAIndicator(closePrices, 100)
+
+			fmt.Printf("closePrices : %v \n", closePrices.Calculate(0).FormattedString(2))
+			fmt.Printf("Moving average : %v \n",movingAverage.Calculate(0).FormattedString(2))
 			return nil
 		},
 		OnError: func(err error) {
 			fmt.Println(err)
 		},
 		TearDown: func(wrappers []exchanges.ExchangeWrapper, markets []*environment.Market) error {
-			fmt.Println("Watch1Min exited")
+			c.Close()
+			fmt.Println("ShowTa exited")
 			return nil
 		},
 	},
-	Interval: time.Minute,
+	Interval: 2 * time.Second,
 }

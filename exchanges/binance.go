@@ -244,7 +244,6 @@ func (wrapper BinanceWrapper) UnsubscribeMarketSummaryFeed(market *environment.M
 
 // GetKlines Gets candlestick bar information
 func (wrapper BinanceWrapper) GetKlines(start int64, symbol string, interval string) (*environment.CandleStickChart, error) {
-	fmt.Println(start)
 	trades, err := wrapper.api.NewKlinesService().
 		Symbol(symbol).Interval(interval).Limit(100).StartTime(start).
 		Do(context.Background())
