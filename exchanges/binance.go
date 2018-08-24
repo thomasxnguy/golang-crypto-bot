@@ -255,7 +255,7 @@ func (wrapper BinanceWrapper) GetKlines(start int64, symbol string, interval str
 	chart := &environment.CandleStickChart{}
 	chart.CandlePeriod = 60 * 60 * 1000
 	chart.CandleSticks = make([]environment.CandleStick, len(trades))
-	for _, t := range trades {
+	for i, t := range trades {
 		c := environment.CandleStick{}
 		c.Close, _ = decimal.NewFromString(t.Close)
 		c.High, _ = decimal.NewFromString(t.High)
@@ -263,8 +263,8 @@ func (wrapper BinanceWrapper) GetKlines(start int64, symbol string, interval str
 		c.Open, _ = decimal.NewFromString(t.Open)
 		c.Volume, _ = decimal.NewFromString(t.Volume)
 		c.TradeNb = t.TradeNum
-		c.OpenTime = t.OpenTime
-		chart.CandleSticks = append(chart.CandleSticks, c)
+		c.OpenTime = t.OpenTime/1000
+		chart.CandleSticks[i] = c
 	}
 
 	return chart, nil
