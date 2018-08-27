@@ -33,23 +33,25 @@ var ShowTa Strategy = IntervalStrategy{
 			return nil
 		},
 		OnUpdate: func(wrappers []exchanges.ExchangeWrapper, markets []*environment.Market) error {
-
-			results, err := wrappers[0].GetKlines(time.Now().UnixNano()/1000000-6060000, "BTCUSDT", "1m")
-			if err != nil {
-				return err
-			}
-
 			series := techan.NewTimeSeries()
-			for _, c := range results.CandleSticks {
-				period := techan.NewTimePeriod(time.Unix(c.OpenTime, 0), time.Hour*2)
-				candle := techan.NewCandle(period)
-				candle.OpenPrice = big.NewFromString(c.Open.String())
-				candle.ClosePrice = big.NewFromString(c.Close.String())
-				candle.MaxPrice = big.NewFromString(c.High.String())
-				candle.MinPrice = big.NewFromString(c.Low.String())
-				series.AddCandle(candle)
-			}
+			i := 0
+			for i < 14 {
+				results, err := wrappers[0].GetKlines(time.Now().UnixNano()/1000000-int64((14-i)*6060000), "BTCUSDT", "1m")
+				if err != nil {
+					return err
+				}
 
+				for _, c := range results.CandleSticks {
+					period := techan.NewTimePeriod(time.Unix(c.OpenTime, 0), time.Minute)
+					candle := techan.NewCandle(period)
+					candle.OpenPrice = big.NewFromString(c.Open.String())
+					candle.ClosePrice = big.NewFromString(c.Close.String())
+					candle.MaxPrice = big.NewFromString(c.High.String())
+					candle.MinPrice = big.NewFromString(c.Low.String())
+					series.AddCandle(candle)
+				}
+				i++
+			}
 			closePrices := techan.NewClosePriceIndicator(series)
 			movingAverage := techan.NewEMAIndicator(closePrices, 100)
 
