@@ -35,6 +35,10 @@ const (
 	measurement = "binance_candle_1d"
 )
 
+// DataColletor Strategy is used to collect candlestick data from exchanger defined in configuration file.
+// Candles are stored in InfluxDB as a point measurement. Modify this file to change period of the candle or market.
+// By default period is 1m and market is BTCUSDT
+
 var DataCollector Strategy = IntervalStrategy{
 	Model: StrategyModel{
 		Name: "DataCollector",
